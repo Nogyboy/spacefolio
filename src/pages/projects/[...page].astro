@@ -7,8 +7,17 @@ import createSlug from "../../lib/createSlug";
 export async function getStaticPaths({ paginate }) {
   const projects = await getCollection("projects");
   if (!projects) return paginate([], { pageSize: 10 });
+
+  let orderedProjects 
+  // Add important projects to the top
+  const importantProjects = projects.filter((project) => project.data.important);
+  orderedProjects = importantProjects.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  // Add the rest of the projects
+  const otherProjects = projects.filter((project) => !project.data.important);
+  orderedProjects = orderedProjects.concat(otherProjects.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()));
+
   projects.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-  return paginate(projects, { pageSize: 10 });
+  return paginate(orderedProjects, { pageSize: 10 });
 }
 
 const { page } = Astro.props;
