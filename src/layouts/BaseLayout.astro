@@ -1,0 +1,38 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import NavBar from "../components/NavBar.astro";
+import Footer from "../components/Footer.astro";
+import { ViewTransitions } from "astro:transitions";
+
+import { SITE_TITLE, SITE_DESCRIPTION, TRANSITION_API } from "../config";
+
+const {
+  image,
+  title = SITE_TITLE,
+  description = SITE_DESCRIPTION,
+  urlMenuItem,
+  ogType,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" data-theme="winter">
+  <head>
+    <BaseHead
+      title={title}
+      description={description}
+      image={image}
+      ogType={ogType}
+    />
+    {TRANSITION_API && <ViewTransitions />}
+  </head>
+  <body class="">
+    <NavBar title={SITE_TITLE} urlMenuItem={urlMenuItem} />
+        <div class="md:flex md:justify-center pt-3 md:pt-5">
+          <main class="p-5 pt-10 lg:pt-0 lg:max-w-[900px] max-w-[100vw]">
+            <slot />
+          </main>
+        </div>
+        <Footer />
+  </body>
+</html>

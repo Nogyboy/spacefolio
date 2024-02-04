@@ -1,0 +1,78 @@
+---
+import ThemeController from "./ThemeController.astro";
+import { NAME, MENU_ITEMS } from "../config";
+import { Icon } from "astro-icon/components";
+
+const { urlMenuItem } = Astro.props;
+---
+
+<div
+  class="sticky lg:shadow-none lg:backdrop-blur-none lg:bg-opacity-100 top-0 z-30 flex h-16 w-full justify-center bg-opacity-90 backdrop-blur transition-all duration-100 bg-base-100 text-base-content shadow-sm"
+>
+  <div class="navbar">
+    <div class="navbar-start">
+      <a
+        class="btn btn-ghost normal-case text-xl hidden lg:flex justify-center"
+        href="/"
+        title="Inicio"
+      >
+        <Icon name="planet" size={25} class="dark:text-accent"/>
+        {NAME}
+      </a>
+    </div>
+    <ul class="navbar-center gap-3">
+      <li
+        class="lg:hidden max-xl:tooltip max-xl:tooltip-primary max-sm:tooltip-bottom"
+        data-tip="Inicio"
+      >
+        <a
+          href="/"
+          title="Inicio"
+          class:list={[
+            "btn normal-case text-xl",
+            {
+              "bg-primary text-secondary dark:text-accent": urlMenuItem === "/home",
+            },
+          ]}
+        >
+          <Icon name="planet" />
+        </a>
+      </li>
+      {
+        MENU_ITEMS.map((item) => (
+          <li
+            class:list={[
+              "max-xl:tooltip max-xl:tooltip-primary",
+              {
+                "max-sm:tooltip-bottom max-xl:tooltip-left":
+                  item.tooltip === "left",
+                "max-sm:tooltip-bottom max-xl:tooltip-right":
+                  item.tooltip === "right",
+                "max-sm:tooltip-bottom max-xl:tooltip-bottom":
+                  item.tooltip === "bottom",
+              },
+            ]}
+            data-tip={item.title}
+          >
+            <a
+              class:list={[
+                "btn normal-case text-xl hover:text-base-content",
+                {
+                  "bg-primary text-white": urlMenuItem === item.url,
+                },
+              ]}
+              href={item.url}
+              title={item.title}
+            >
+              <Icon name={item.icon} />
+              <span class="hidden xl:block">{item.title}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="navbar-end ml-2 md:ml-0">
+      <ThemeController />
+    </div>
+  </div>
+</div>

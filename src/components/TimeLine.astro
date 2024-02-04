@@ -1,0 +1,25 @@
+---
+const { title, subtitle } = Astro.props;
+---
+
+<div class="flex">
+  <div class="timeline__time">
+    <span class="w-5 h-5 bg-primary block rounded-full mt-1"></span>
+    <span
+      class="timeline__line bg-primary block h-full w-[4px] translate-x-[8px]"
+    ></span>
+  </div>
+  <div class="experience__data bd-grid px-5">
+    <h3 class="font-semibold mb-1">{title}</h3>
+    <span class="font-light text-sm">{subtitle}</span>
+    <p class="my-2 text-justify">
+      <slot />
+    </p>
+  </div>
+</div>
+
+<style>
+  div:last-child .timeline__time > .timeline__line {
+  display: none;
+}
+</style>
