@@ -5,7 +5,7 @@ import { SOCIAL_LINKS } from "src/config";
 ---
 
 <BaseLayout title="Contact" urlMenuItem="/contact">
-  <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4 md:gap-x-28 mt-4">
+  <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5 md:gap-x-28 mt-4">
     {
       SOCIAL_LINKS.map((link) => (
         <a
@@ -16,7 +16,7 @@ import { SOCIAL_LINKS } from "src/config";
           aria-label={link.title}
           title={link.title}
         >
-          <Icon name={link.icon} class="w-44 h-44" />
+          <Icon name={link.icon} class="w-32 h-32" />
           <span class="text-center">
             {link.title}
             </span>

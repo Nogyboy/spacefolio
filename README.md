@@ -103,6 +103,8 @@ You can add your own icons in the `/src/icons` folder and use them in your compo
 - [SVGL](https://svgl.vercel.app/)
 - [Simple Icons](https://simpleicons.org/)
 
+### Need to optimize your images? Try Squoosh
+- [Squoosh](https://squoosh.app/)
 
 ### Content
 #### Blog
