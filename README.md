@@ -1,6 +1,6 @@
 # Space Portfolio | Personal Portfolio Template
 
-![Space Portfolio | Personal Porfolio Website Template](public/previewPorfolio.png)
+![Space Portfolio | Personal Portfolio Website Template](public/previewPorfolio.png)
 
 Spacefolio is a complimentary, open-source blueprint designed to empower you in creating your Personal Portfolio Website. It is crafted using Astro and TailwindCSS, offering a versatile platform to showcase your work and skills to the world.
 
